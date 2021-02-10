@@ -1,0 +1,36 @@
+<%- include('header') -%>
+
+<form method="post" action="/post">
+  <label>
+    Nafn:
+    <input required type="text" name="name" value="">
+  </label>
+  <label>
+    Kennitala:
+    <input
+      required
+      type="text"
+      pattern="^[0-9]{6}-?[0-9]{4}$"
+      name="nationalId"
+      value=""
+    >
+  </label>
+  <label>
+    Athugasemd:
+    <input required type="text" name="Athugasemd" value="">
+  </label>
+  <div>
+    <input type="checkbox" id="anon" name="anon" value="true">
+    <label for="anon"> Ekki birta nafn á lista </label>
+  </div>
+
+  <% if(registrationErrors != []) { %>
+    <%- include('registrationErrors') -%>
+  <% } %>
+
+  <button>Skrifa undir</button>
+</form>
+
+<%- include('registrationList') -%>
+
+<%- include('footer') -%>
