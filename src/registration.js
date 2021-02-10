@@ -1,12 +1,15 @@
 import express from 'express';
-import { insert } from './db.js';
+import { insert, getAllSignatures } from './db.js';
 
 export const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
-  // TODO: make getAllSignatures in db.js
-  // const allSignatures = getAllSignatures();
+    const allSignatures = await getAllSignatures().catch((e) => { console.error(e); });
 
-  res.render('registration', { registrationErrors: ["test 1"] }); //, { signatures: allSignatures })
+    console.log("komið með all signatures !");
+    console.log(allSignatures.rows[0].name);
+
+    res.render('registration', { registrationErrors: ["test 1","test 2"], signatures: allSignatures.rows })
+
 });

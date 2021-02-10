@@ -28,13 +28,30 @@ export async function insert(signature) {
 
   try {
     const result = await client.query(query, signature);
-    console.log('rows :>> ', result.rows);
   } catch (e) {
     console.error('Error selecting', e);
   } finally {
     client.release();
   }
 
+  await pool.end();
+}
+
+
+export async function getAllSignatures() {
+  const client = await pool.connect();
+
+  const query = 'SELECT * FROM signatures';
+
+  try {
+    return await client.query(query);
+  } catch (e) {
+    console.error('Error selecting', e);
+  } finally {
+    client.release();
+  }
+
+  console.log("getAllSignatures done");
   await pool.end();
 }
 
