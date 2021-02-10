@@ -20,39 +20,18 @@ pool.on('error', (err) => {
 });
 
 
-export async function insert(signature) {
+export async function query(q, values = []) {
   const client = await pool.connect();
 
-  // signiture = [name, nationalId, comment, anonymous]
-  const query = 'INSERT INTO signatures(name, nationalId, comment, anonymous) VALUES($1, $2, $3, $4)';
-
   try {
-    const result = await client.query(query, signature);
+    const result = await client.query(q, values);
+    return result;
   } catch (e) {
-    console.error('Error selecting', e);
+    return null;
   } finally {
     client.release();
   }
-
-  await pool.end();
 }
 
-
-export async function getAllSignatures() {
-  const client = await pool.connect();
-
-  const query = 'SELECT * FROM signatures;';
-
-  try {
-    return await client.query(query);
-  } catch (e) {
-    console.error('Error selecting', e);
-  } finally {
-    client.release();
-  }
-
-  console.log("getAllSignatures done");
-  await pool.end();
-}
 
 

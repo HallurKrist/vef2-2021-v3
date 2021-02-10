@@ -1,11 +1,11 @@
 import express from 'express';
-import { insert, getAllSignatures } from './db.js';
+import { query } from './db.js';
 
 export const router = express.Router();
 
 router.get('/', async (req, res) => {
 
-    const allSignatures = await getAllSignatures().catch((e) => { console.error(e); });
+    let allSignatures = await query('SELECT * FROM signatures');
 
     console.log("komið með all signatures !");
     console.log(allSignatures.rows[0].name);
