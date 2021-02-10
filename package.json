@@ -1,0 +1,24 @@
+{
+  "name": "vef2-2021-v2",
+  "version": "1.0.0",
+  "description": "vefforitunar verkefni 2",
+  "main": "src/app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HallurKrist/vef2-2021-v2.git"
+  },
+  "author": "Hallur Kristinn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HallurKrist/vef2-2021-v2/issues"
+  },
+  "homepage": "https://github.com/HallurKrist/vef2-2021-v2#readme"
+}
