@@ -1,2 +1,9 @@
 <h3 class='regError'>Villur við undirskrift:</h3>
 <!-- TODO: list og errors at registration -->
+
+
+<ul>
+  <% for(var i = 0; i < registrationErrors.length; i++) { %>
+    <li><%- registrationErrors[i] %></li>
+  <% } %>
+</ul>

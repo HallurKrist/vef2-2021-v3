@@ -1,6 +1,6 @@
 <%- include('header') -%>
 
-<form method="post" action="/post">
+<form method="post" action="/">
   <label>
     Nafn:
     <input required type="text" name="name" value="">
@@ -17,10 +17,10 @@
   </label>
   <label>
     Athugasemd:
-    <input required type="text" name="Athugasemd" value="">
+    <input type="text" name="comment" value="">
   </label>
   <div>
-    <input type="checkbox" id="anon" name="anon" value="true">
+    <input type="checkbox" id="anon" name="anon" value=false>
     <label for="anon"> Ekki birta nafn á lista </label>
   </div>
 
