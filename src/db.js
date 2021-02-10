@@ -41,7 +41,7 @@ export async function insert(signature) {
 export async function getAllSignatures() {
   const client = await pool.connect();
 
-  const query = 'SELECT * FROM signatures';
+  const query = 'SELECT * FROM signatures;';
 
   try {
     return await client.query(query);
