@@ -1,5 +1,6 @@
 import pg from 'pg';
 import dotenv from 'dotenv';
+import { readFile } from 'fs/promises';
 
 dotenv.config();
 
@@ -31,3 +32,22 @@ export async function query(q, values = []) {
     client.release();
   }
 }
+
+const schemaFile = './schema.sql';
+
+async function create() {
+  const data = await readFile(schemaFile);
+
+  try {
+    await query(data.toString('utf-8'));
+    console.info('Schema created');
+  } catch (e) {
+    console.error('Error creating schema', e);
+  } finally {
+    pool.end();
+  }
+}
+
+create().catch((err) => {
+  console.error('Error creating schema', err);
+});

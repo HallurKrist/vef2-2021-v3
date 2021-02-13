@@ -1,9 +1,11 @@
-<h3 class='regError'>Villur við undirskrift:</h3>
-<!-- TODO: list og errors at registration -->
+<% if(registrationErrors.length != 0) { %>
+  <dev class="errors">
+    <h3 class='errors__title'>Villur við undirskrift:</h3>
 
-
-<ul>
-  <% for(var i = 0; i < registrationErrors.length; i++) { %>
-    <li><%- registrationErrors[i] %></li>
-  <% } %>
-</ul>
+    <ul class="errors__list">
+      <% for(var i = 0; i < registrationErrors.length; i++) { %>
+        <li><%- registrationErrors[i] %></li>
+      <% } %>
+    </ul>
+  </dev>
+<% } %>

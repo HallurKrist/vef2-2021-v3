@@ -1,36 +1,61 @@
 <%- include('header') -%>
 
-<form method="post" action="/">
-  <label>
-    Nafn:
-    <input required type="text" name="name" value="">
-  </label>
-  <label>
-    Kennitala:
-    <input
+<dev class='pageContainer'>
+  <h1 class='title'>Undirskriftarlisti</h1>
+  <form method="post" action="/" class="form">
+    <dev class="form__input">
+      <label for="name" class="form__label">
+        Nafn*
+      </label>
+      <input
       required
+      id="name"
+      type="text"
+      name="name"
+      value=""
+      class="form__text"
+      >
+    </dev>
+    <dev class="form__input">
+      <label for="nationalId" class="form__label">
+        Kennitala*
+      </label>
+      <input
+      required
+      id="nationalId"
       type="text"
       pattern="^[0-9]{6}-?[0-9]{4}$"
       name="nationalId"
       value=""
-    >
-  </label>
-  <label>
-    Athugasemd:
-    <input type="text" name="comment" value="">
-  </label>
-  <div>
-    <input type="checkbox" id="anon" name="anon" value=false>
-    <label for="anon"> Ekki birta nafn á lista </label>
-  </div>
+      class="form__text"
+      >
+    </dev>
+    <dev class="form__input">
+      <label for="comment" class="form__label">
+        Athugasemd:
+      </label>
+      <input
+      id="comment"
+      type="text"
+      name="comment"
+      value=""
+      class="form__text__large"
+      >
+    </dev>
+    <div class="form__anon">
+      <input class="form__anon__input" type="checkbox" id="anon" name="anon" value=true>
+      <label class="form__anon__label" for="anon"> Ekki birta nafn á lista </label>
+    </div>
 
-  <% if(registrationErrors != []) { %>
     <%- include('registrationErrors') -%>
-  <% } %>
 
-  <button>Skrifa undir</button>
-</form>
+    <div class="form__button">
+      <button class="form__button__sign">Skrifa undir</button>
+    </div>
+  </form>
 
 <%- include('registrationList') -%>
+
+</dev>
 
 <%- include('footer') -%>

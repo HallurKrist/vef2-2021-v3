@@ -1,7 +1,8 @@
 body {
   background-color: #ffffec;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+}
 
 .pageContainer {
   display: flex;
@@ -9,87 +10,124 @@ body {
   flex-direction: column;
   align-self: center;
   max-width: 800px;
-  width: 100%; }
+  width: 100%;
+}
 
 .title {
   display: flex;
   justify-content: center;
   margin-top: 0.5em;
-  margin-bottom: 0.5em; }
+  margin-bottom: 0.5em;
+}
 
 .form {
   display: flex;
   flex-direction: column;
   padding-bottom: 1.5em;
   border-bottom: #999 solid;
-  border-width: 1px; }
-  .form__input {
+  border-width: 1px;
+
+  &__input {
     display: flex;
     flex-direction: row;
-    margin: 0.5em; }
-  .form__label {
-    width: 7em; }
-  .form__text {
+    margin: 0.5em;
+  }
+
+  &__label {
+    width: 7em;
+  }
+
+  &__text {
     width: 100%;
-    height: 1.5em; }
-    .form__text__large {
+    height: 1.5em;
+
+    &__large {
       width: 100%;
-      height: 3em; }
-  .form__anon {
+      height: 3em;
+    }
+  }
+
+  &__anon {
     display: flex;
     justify-content: center;
-    margin: 0.5em; }
-    .form__anon__input {
-      margin-right: 0.5em; }
-    .form__anon__label {
-      margin-left: 0.5em; }
-  .form__button {
+    margin: 0.5em;
+
+    &__input {
+      margin-right: 0.5em;
+    }
+
+    &__label {
+      margin-left: 0.5em;
+    }
+  }
+
+  &__button {
     display: flex;
     justify-content: center;
-    width: 100%; }
-    .form__button__sign {
+    width: 100%;
+
+    &__sign{
       background-color: #fff;
       border-radius: 5px;
       padding-left: 1em;
       padding-right: 1em;
       padding-top: 0.2em;
       padding-bottom: 0.2em;
-      font-size: 1.5em; }
+      font-size: 1.5em;
+    }
+  }
+}
 
 .errors {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
-  .errors__title {
+  flex-direction: column;
+
+  &__title {
     display: flex;
-    justify-content: center; }
-  .errors__list {
+    justify-content: center;
+  }
+
+  &__list {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: fit-content;
-    align-items: left; }
-
+    align-items: left;
+  }
+}
 table {
   width: 100%;
-  border-collapse: collapse; }
+  border-collapse: collapse;
+}
 
 th, td {
-  border: 1px solid #999; }
-
+  border: 1px solid #999;
+}
 .list {
   display: flex;
   flex-direction: column;
-  align-items: center; }
-  .list__day {
-    width: 10%; }
-    .list__day__text {
+  align-items: center;
+
+  &__day {
+    width: 10%;
+
+    &__text {
       padding: 5px;
-      text-align: center; }
-  .list__name {
-    width: 15%; }
-    .list__name__text {
-      padding: 5px; }
-  .list__comment__text {
-    padding: 5px; }
+      text-align: center;
+    }
+  }
+
+  &__name {
+    width: 15%;
+
+    &__text {
+      padding: 5px;
+    }
+  }
+
+  &__comment__text {
+    padding: 5px;
+  }
+}

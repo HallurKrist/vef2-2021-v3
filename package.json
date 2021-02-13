@@ -8,15 +8,25 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
+    "node-sass": "^5.0.0",
     "pg": "^8.5.1"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.32.7",
+    "stylelint": "^13.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm-run-all --parallel eslint stylelint",
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "npm-run-all --parallel sass start",
+    "setup": "node src/createdb.js",
+    "sass": "node-sass ./public/styles.scss ./public/styles.css -w",
+    "stylelint": "stylelint ./public/styles.scss --syntax scss",
+    "eslint": "eslint **/*.js --ignore-pattern node_modules/"
   },
   "repository": {
     "type": "git",
