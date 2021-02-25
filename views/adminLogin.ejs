@@ -1,0 +1,41 @@
+<%- include('header') -%>
+
+
+<dev class='pagecontainer'>
+  <h1 class='title'>Innskráning</h1>
+  <form method="post" action="/admin" class="loginForm" enctype="application/x-www-form-urlencoded">
+    <dev class="form__input">
+      <label for="userName" class="form__label">
+        Notendanafn
+      </label>
+      <input
+      required
+      id="userName"
+      type="text"
+      name="userName"
+      value=""
+      class="form__text"
+      >
+    </dev>
+    <dev class="form__input">
+      <label for="password" class="form__label">
+        Lykilorð
+      </label>
+      <input
+      id="password"
+      type="text"
+      name="password"
+      value=""
+      class="form__text"
+      >
+    </dev>
+    <p><%- loginErrors %></p>
+    <div class="form__login__button">
+      <button class="form__button__login">Innskrá</button>
+    </div>
+  </form>
+  <a href = "../">Til baka</a>
+
+</dev>
+
+<%- include('footer') -%>

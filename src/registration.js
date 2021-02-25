@@ -1,16 +1,43 @@
 import express from 'express';
+import session from 'express-session';
 import { body, validationResult } from 'express-validator';
-import { query } from './db.js';
+import { query, getPage } from './db.js';
 
 export const router = express.Router();
 
-router.use(express.urlencoded({ extended: true }));
+// router.use(express.urlencoded({ extended: true }));
+// router.use(session({
+//   name: 'counter.sid',
+//   secret: 'sessionSecret',
+//   resave: false,
+//   saveUninitialized: false,
+// }));
+
+router.use((req, res, next) => {
+  const { originalUrl } = req;
+
+  if (!req.session.page) {
+    req.session.page = 0;
+  }
+
+  if (!req.session.signCount) {
+    req.session.signCount = 0;
+  }
+
+  next();
+});
 
 let allSignatures;
 
 router.get('/', async (req, res) => {
-  allSignatures = await query('SELECT * FROM signatures ORDER BY id deSC');
-  res.render('registration', { registrationErrors: [], signatures: allSignatures.rows });
+  req.session.page = 0;
+  allSignatures = await getPage(0);
+  const signCount = await query("SELECT COUNT(*) AS count FROM signatures;");
+  req.session.signCount = signCount.rows[0].count;
+  res.render('registration', { registrationErrors: [],
+                              signatures: allSignatures.rows,
+                              page: 0,
+                              signCount: req.session.signCount });
 });
 
 router.post('/',
@@ -36,7 +63,10 @@ router.post('/',
 
     if (!errors.isEmpty()) {
       const errorMessages = errors.array().map(i => i.msg); // eslint-disable-line
-      return res.render('registration', { registrationErrors: errorMessages, signatures: allSignatures.rows });
+      return res.render('registration', { registrationErrors: errorMessages,
+                                          signatures: allSignatures.rows,
+                                          page: req.session.page,
+                                          signCount: req.session.signCount });
     }
 
     return next();
@@ -61,6 +91,21 @@ router.post('/',
       errors = ['Búið að skrifa undir með þessari kennitölu'];
     }
 
-    allSignatures = await query('SELECT * FROM signatures ORDER BY id deSC');
-    return res.render('registration', { registrationErrors: errors, signatures: allSignatures.rows });
+    allSignatures = await getPage(req.session.page);
+    const signCount = await query("SELECT COUNT(*) AS count FROM signatures;");
+    req.session.signCount = signCount.rows[0].count;
+    return res.render('registration', { registrationErrors: errors,
+                                      signatures: allSignatures.rows,
+                                      page: req.session.page,
+                                      signCount: signCount.rows[0].count });
+  });
+
+
+  router.get('/:pageNr', async (req, res, next) => {
+    req.session.page = req.params.pageNr -1;
+    allSignatures = await getPage(req.params.pageNr -1);
+    res.render('registration', { registrationErrors: [],
+                                signatures: allSignatures.rows,
+                                page: req.session.page,
+                                signCount: req.session.signCount });
   });

@@ -4,11 +4,16 @@
   "description": "vefforitunar verkefni 2",
   "main": "src/app.js",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "express-validator": "^6.9.2",
+    "faker": "^5.4.0",
     "node-sass": "^5.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pg": "^8.5.1"
   },
   "devDependencies": {
@@ -24,7 +29,7 @@
   },
   "scripts": {
     "test": "npm-run-all --parallel eslint stylelint",
-    "start": "node src/app.js",
+    "start": "nodemon src/app.js",
     "dev": "npm-run-all --parallel sass start",
     "setup": "node src/createdb.js",
     "sass": "node-sass ./public/styles.scss ./public/styles.css -w",

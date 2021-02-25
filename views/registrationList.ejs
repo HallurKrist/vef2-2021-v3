@@ -1,5 +1,6 @@
 <div class="list">
   <h2 class="list__title">Undirskriftir</h2>
+  <p>Fjöldi undirskrifta: <%- signCount %></p>
   <table>
     <colgroup>
       <col span="1" class='list__day'>
@@ -12,15 +13,31 @@
       <th class="list__day__text">Athugasemd</th>
     </tr>
     <% for(var i = 0; i < signatures.length; i++) { %>
-      <% if(!signatures[i].anonymous) { %>
-        <tr>
-          <td class="list__day__text"><%- signatures[i].signed.toLocaleDateString().replace('/','.').replace('/','.') %></th>
-          <td class="list__name__text"><%- signatures[i].name %></th>
-          <td class="list__comment__text"><%- signatures[i].comment %></th>
-        </tr>
-      <% } %>
+      <tr>
+        <td class="list__day__text"><%- signatures[i].signed.toLocaleDateString().replace('/','.').replace('/','.') %></th>
+          <% if(!signatures[i].anonymous) { %>
+            <td class="list__name__text"><%- signatures[i].name %></th>
+          <% } else { %>
+            <td class="list__name__text">Nafnlaust</th>
+          <% } %>
+        <td class="list__comment__text"><%- signatures[i].comment %></th>
+      </tr>
     <% } %>
   </table>
+  <dev class='pageInfo'>
+    <% if(page == 0) { %>
+      <a>Fyrri síða</a>
+    <% } else { %>
+      <a href = '<%= page %>'>Fyrri síða</a>
+    <% } %>
+    <p>síða <%- page + 1 %> af <%- Math.ceil(signCount / 50) %></p>
+    <% if(page == Math.ceil(signCount / 50) - 1) { %>
+      <a>Næsta síða</a>
+    <% } else { %>
+      <a href = '<%= page + 2 %>'>Næsta síða</a>
+    <% } %>
+
+  </dev>
 </div>
 
 

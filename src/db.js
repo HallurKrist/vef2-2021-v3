@@ -26,7 +26,21 @@ export async function query(q, values = []) {
     const result = await client.query(q, values);
     return result;
   } catch (e) {
-    return null;
+    console.error('Query error', e);
+  } finally {
+    client.release();
+  }
+}
+
+export async function getPage(offset) {
+  const client = await pool.connect();
+
+  try {
+    const q = 'SELECT * FROM signatures ORDER BY signed DESC OFFSET $1 LIMIT 50';
+    const result = await client.query(q, [offset * 50]);
+    return result;
+  } catch (e) {
+    console.error('Paging error', e);
   } finally {
     client.release();
   }
