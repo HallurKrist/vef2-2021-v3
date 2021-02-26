@@ -35,7 +35,6 @@
     "sass": "node-sass ./public/styles.scss ./public/styles.css -w",
     "stylelint": "stylelint ./public/styles.scss --syntax scss",
     "eslint": "eslint **/*.js --ignore-pattern node_modules/"
-    // "build": "node src/createdb.js"
   },
   "repository": {
     "type": "git",
