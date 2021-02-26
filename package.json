@@ -29,13 +29,13 @@
   },
   "scripts": {
     "test": "npm-run-all --parallel eslint stylelint",
-    "start": "nodemon src/app.js",
+    "start": "node src/app.js",
     "dev": "npm-run-all --parallel sass start",
     "setup": "node src/createdb.js",
     "sass": "node-sass ./public/styles.scss ./public/styles.css -w",
     "stylelint": "stylelint ./public/styles.scss --syntax scss",
-    "eslint": "eslint **/*.js --ignore-pattern node_modules/",
-    "build": "node src/createdb.js"
+    "eslint": "eslint **/*.js --ignore-pattern node_modules/"
+    // "build": "node src/createdb.js"
   },
   "repository": {
     "type": "git",
