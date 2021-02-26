@@ -27,6 +27,7 @@ export async function query(q, values = []) {
     return result;
   } catch (e) {
     console.error('Query error', e);
+    return false;
   } finally {
     client.release();
   }
@@ -41,6 +42,7 @@ export async function getPage(offset) {
     return result;
   } catch (e) {
     console.error('Paging error', e);
+    return false;
   } finally {
     client.release();
   }

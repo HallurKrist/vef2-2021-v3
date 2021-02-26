@@ -3,16 +3,16 @@
 
 <dev class='pagecontainer'>
   <h1 class='title'>Innskráning</h1>
-  <form method="post" action="/admin" class="loginForm" enctype="application/x-www-form-urlencoded">
+  <form method="post" action="/admin/login" class="loginForm" enctype="application/x-www-form-urlencoded">
     <dev class="form__input">
-      <label for="userName" class="form__label">
+      <label for="username" class="form__label">
         Notendanafn
       </label>
       <input
       required
-      id="userName"
+      id="username"
       type="text"
-      name="userName"
+      name="username"
       value=""
       class="form__text"
       >
@@ -23,13 +23,15 @@
       </label>
       <input
       id="password"
-      type="text"
+      type="password"
       name="password"
       value=""
       class="form__text"
       >
     </dev>
-    <p><%- loginErrors %></p>
+    <dev class="form__login__error">
+      <p><%- loginErrors %></p>
+    </dev>
     <div class="form__login__button">
       <button class="form__button__login">Innskrá</button>
     </div>

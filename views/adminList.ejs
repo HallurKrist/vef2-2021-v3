@@ -1,0 +1,16 @@
+<%- include('header') -%>
+
+<dev class='pagecontainer'>
+  <h1 class='title'>Undirskriftarlisti -- umsjón</h1>
+  <div class = 'logged-in-user'>
+    <p>Innskráður sem: </p>
+    <p class = 'logged-in-user__name'><%- user.username -%></p>
+  </div>
+  <a href ='/admin/logout'>Útskrá</a>
+  <%- include('signatureList') -%>
+
+
+
+</dev>
+
+<%- include('footer') -%>

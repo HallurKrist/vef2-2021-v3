@@ -55,6 +55,21 @@ body {
       padding-left: 1em;
       padding-right: 1em;
       padding-top: 0.2em; }
+    .form__button__login {
+      background-color: #fff;
+      border-radius: 5px;
+      font-size: 1em;
+      padding-bottom: 0.2em;
+      padding-left: 1em;
+      padding-right: 1em;
+      padding-top: 0.2em;
+      width: 14em; }
+  .form__login__error {
+    display: flex;
+    justify-content: center; }
+  .form__login__button {
+    display: flex;
+    justify-content: center; }
 
 .errors {
   align-items: center;
@@ -75,6 +90,9 @@ table {
   border-collapse: collapse;
   width: 100%; }
 
+tr {
+  height: 3em; }
+
 th,
 td {
   border: 1px solid #999; }
@@ -94,3 +112,47 @@ td {
       padding: 5px; }
   .list__comment__text {
     padding: 5px; }
+
+.adminlist {
+  align-items: center;
+  display: flex;
+  flex-direction: column; }
+  .adminlist__day {
+    width: 10%; }
+    .adminlist__day__text {
+      padding: 5px;
+      text-align: center; }
+  .adminlist__name {
+    width: 15%; }
+    .adminlist__name__text {
+      padding: 5px; }
+  .adminlist__delete {
+    width: 8%; }
+  .adminlist__comment__text {
+    padding: 5px; }
+  .adminlist__buttonCase {
+    display: flex;
+    justify-content: center; }
+  .adminlist__button {
+    background-color: #fff;
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: 0.8em;
+    padding: 0.6em; }
+
+.page-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5em;
+  width: 100%; }
+  .page-info__link, .page-info__pageCount {
+    margin-bottom: 1em;
+    margin-top: 1em; }
+
+.logged-in-user {
+  display: flex;
+  flex-direction: row; }
+  .logged-in-user__name {
+    font-weight: bold;
+    margin-left: 0.2em; }

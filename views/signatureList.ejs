@@ -1,0 +1,83 @@
+<div class="list">
+  <h2 class="list__title">Undirskriftir</h2>
+  <p>Fjöldi undirskrifta: <%- signCount %></p>
+  <table>
+    <% if(user) { %>
+      <colgroup>
+        <col span="1" class='adminlist__day'>
+        <col span="1" class='adminlist__name'>
+        <col span="1" class='adminlist__comment'>
+        <col span="1" class='adminlist__delete'>
+     </colgroup>
+     <tr>
+       <th class="adminlist__day__text">Dags</th>
+       <th class="adminlist__day__text">Nafn</th>
+       <th class="adminlist__day__text">Athugasemd</th>
+       <th class="adminlist__day__text">Eyða</th>
+     </tr>
+    <% } else { %>
+      <colgroup>
+        <col span="1" class='list__day'>
+        <col span="1" class='list__name'>
+        <col span="1" class='list__comment'>
+     </colgroup>
+     <tr>
+      <th class="list__day__text">Dags</th>
+      <th class="list__day__text">Nafn</th>
+      <th class="list__day__text">Athugasemd</th>
+    </tr>
+    <% } %>
+    <% for(var i = 0; i < signatures.length; i++) { %>
+      <% if(user) { %>
+        <tr>
+          <td class="adminlist__day__text"><%- signatures[i].signed.toLocaleDateString().replace('/','.').replace('/','.') %></th>
+            <% if(!signatures[i].anonymous) { %>
+              <td class="adminlist__name__text"><%- signatures[i].name %></th>
+            <% } else { %>
+              <td class="adminlist__name__text">Nafnlaust</th>
+            <% } %>
+          <td class="adminlist__comment__text"><%- signatures[i].comment %></th>
+          <td>
+            <form method="POST" action="/admin" class="adminlist__buttonCase">
+              <button name='id' value=<%- signatures[i].id -%> class = "adminlist__button">Eyða</button>
+            </form>
+          </th>
+        </tr>
+      <% } else { %>
+        <tr>
+          <td class="list__day__text"><%- signatures[i].signed.toLocaleDateString().replace('/','.').replace('/','.') %></th>
+            <% if(!signatures[i].anonymous) { %>
+              <td class="list__name__text"><%- signatures[i].name %></th>
+            <% } else { %>
+              <td class="list__name__text">Nafnlaust</th>
+            <% } %>
+          <td class="list__comment__text"><%- signatures[i].comment %></th>
+        </tr>
+      <% } %>
+    <% } %>
+  </table>
+  <dev class='page-info'>
+    <% if(page == 0) { %>
+      <a class='page-info__link'>Fyrri síða</a>
+    <% } else { %>
+      <% if(user) { %>
+        <a class='page-info__link' href = '/admin/page<%= page %>'>Fyrri síða</a>
+      <% } else { %>
+        <a class='page-info__link' href = '<%= page %>'>Fyrri síða</a>
+      <% } %>
+    <% } %>
+    <p class='page-info__pageCount'>Síða <%- page + 1 %> af <%- Math.ceil(signCount / 50) %></p>
+    <% if(page == Math.ceil(signCount / 50) - 1) { %>
+      <a class='page-info__link'>Næsta síða</a>
+    <% } else { %>
+      <% if(user) { %>
+        <a class='page-info__link' href = '/admin/page<%= page + 2 %>'>Næsta síða</a>
+      <% } else { %>
+        <a class='page-info__link' href = '<%= page + 2 %>'>Næsta síða</a>
+      <% } %>
+    <% } %>
+  </dev>
+</div>
+
+
+

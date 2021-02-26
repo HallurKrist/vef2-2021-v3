@@ -4,7 +4,6 @@ import { query } from './db.js';
 // gæti þurft að breyta þessum föllum mögulega?
 
 export async function comparePasswords(password, user) {
-  console.log(password, user.password);
   const result = await bcrypt.compare(password, user.password);
 
   if (result) {
@@ -15,7 +14,7 @@ export async function comparePasswords(password, user) {
 }
 
 export async function findByUsername(username) {
-  const q = 'select * from users where username = $1';
+  const q = 'select * from users where username = $1;';
 
   try {
     const result = await query(q, [username]);
